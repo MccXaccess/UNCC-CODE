@@ -1,3 +1,4 @@
 # Documentations:
 
-NodeJS - https://nodejs.org/docs/latest/api/
+NodeJS - https://nodejs.org/docs/latest/api
+Javascript - https://devdocs.io/javascript/global_objects/string/split
