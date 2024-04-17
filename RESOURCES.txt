@@ -2,3 +2,5 @@
 
 NodeJS - https://nodejs.org/docs/latest/api
 Javascript - https://devdocs.io/javascript/global_objects/string/split
+C# - https://learn.microsoft.com/en-us/dotnet/csharp/
+Git - https://git-scm.com/doc
