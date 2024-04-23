@@ -1,0 +1,15 @@
+4 types of different streams.
+writeable - only writeable
+it is just an object that has its ( events, properties, methods, internal buffer of size - 16384 default )
+stream.write() // once it is filled
+
+readable - only readable.
+it is just an object that has its ( events, properties, methods, internal buffer of size - 16384 default )
+stream.push(data) // to fill it up with data.
+stream.on('data', (chunk) => {}) // event after it is filled
+
+duplex - both r and w.
+has 2 internal buffers 1 for r another for w
+
+transform - when you want to modify data from A and transform to point B.
+has 2 internal buffers 1 for r another for w
