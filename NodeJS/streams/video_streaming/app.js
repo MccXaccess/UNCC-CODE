@@ -7,6 +7,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/video", function (req, res) {
+  console.log('used this');
   // Ensure there is a range given for the video
   const range = req.headers.range;
   if (!range) {
@@ -42,6 +43,6 @@ app.get("/video", function (req, res) {
   videoStream.pipe(res);
 });
 
-app.listen(8000, function () {
+app.listen(8001, function () {
   console.log("Listening on port 8000!");
 });
