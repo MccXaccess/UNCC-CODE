@@ -1,34 +1,79 @@
-const fs = require("fs/promises");
+// const fs = require("node:fs/promises");
 
-// without streams
+// Execution Time: 8s
+// CPU Usage: 100% (one core)
+// Memory Usage: 50MB
 // (async () => {
+//   console.time("writeMany");
+//   const fileHandle = await fs.open("test.txt", "w");
 
-//     const data = await fs.open('./text.txt', 'w');
+//   for (let i = 0; i < 1000000; i++) {
+//     await fileHandle.write(` ${i} `);
+//   }
+//   console.timeEnd("writeMany");
+// })();
 
-//     const executor = async (i) => {
+// Execution Time: 1.8s
+// CPU Usage: 100% (one core)
+// Memory Usage: 50MB
+// const fs = require("node:fs");
 
-//         await data.write(` ${i} `);
-
+// (async () => {
+//   console.time("writeMany");
+//   fs.open("test.txt", "w", (err, fd) => {
+//     for (let i = 0; i < 1000000; i++) {
+//       const buff = Buffer.from(` ${i} `, "utf-8");
+//       fs.writeSync(fd, buff);
 //     }
 
-//     for ( let i = 0 ; i < 1000000 ; i++)
-//         {
-//             console.log('asdf');
-//             executor(i);
-//         }
+//     console.timeEnd("writeMany");
+//   });
+// })();
 
-// })()
+const fs = require("node:fs/promises");
 
-// NOT A GOOD PRACTISE THO.
-// HIGH MEMORY USAGE, HIGH TRANSFER SPEED
-// with streams
+// DON'T DO IT THIS WAY!!!!
+// Execution Time: 270ms
+// CPU Usage: 100% (one core)
+// Memory Usage: 200MB
 (async () => {
-	const fileHandle = await fs.open("./text.txt", "w");
+  console.time("writeMany");
+  const fileHandle = await fs.open("test.txt", "w");
 
-	const stream = fileHandle.createWriteStream();
+  const stream = fileHandle.createWriteStream();
 
-	for (let i = 0; i < 1000000; i++) {
-		const bufferSpace = Buffer.from(i.toString(), "utf-8");
-		stream.write(bufferSpace);
-	}
+  console.log(stream.writableHighWaterMark);
+
+  // if we do one byte less it will be true
+  const buff = Buffer.alloc(16383, '111');
+
+  console.log(buff);
+
+  // checking whether our stream buffer is full
+  console.log(stream.write(buff));
+  // false as it is directly hitting the 16384 threshold
+  console.log(stream.write(buff));
+
+  // once the stream is filled with data.
+  stream.on('drain', () => {
+    console.log('emptied stream');
+  })
+
+  // console.log(stream.writableLength);
+
+  // const buff = Buffer.from('string');
+
+  // stream.write(buff);
+
+  // console.log(buff);
+
+  // console.log(stream.writableLength);
+
+  // for (let i = 0; i < 1000000; i++) {
+  //   const buff = Buffer.from(` ${i} `, "utf-8");
+  //   stream.write(buff);
+  // }
+  console.timeEnd("writeMany");
+  // fileHandle.close(); 
+
 })();
