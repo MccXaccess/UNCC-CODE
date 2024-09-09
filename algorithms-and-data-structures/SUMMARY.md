@@ -5,7 +5,9 @@ Bro Code - [ALGS & DS](https://youtu.be/CBYHwZcbD-s)
 
 prerequesites
 big O notation
-NOTE: learn log n and n log n
+NOTE:
+learn log n and n log n
+hashmaps/hashtables
 
 big O notation is to describe which code is faster than the other, relying on none other than amount of operations
 as it cant differ across machines compared to time, here are the following types of output
@@ -41,7 +43,7 @@ faster in time?
 less memory intense?
 more readable?
 
-HOW TO FIND A COMPLEXITY? BIG O SHORTHANDS
+HOW TO FIND A time COMPLEXITY? BIG O SHORTHANDS
 there are some rules they might not always work but can be a great starting point
 1: arithmetics operations are constant.
 2: variable assignment is constant
@@ -50,6 +52,59 @@ there are some rules they might not always work but can be a great starting poin
 
 so if you know that something isn't N tied, then it is constant O(1), but if N influences the amount of time code has to iterate,
 then it is O(n or n2)
+
+Space complexity:
+we can also use big o notation to analyze the space in hardware required for the code runtime
+
+what about the input?
+the more input grows the more space it might require ( wrote out of memory )
+sometimes you will hear auxiliary space complexity, and that is when an alogirhm itself takes space
+not including space taken by the input
+
+space compelxity identifying rules:
+
+- most primitives ( booleans , numbers, undefined, null ) are constant space
+- strings are different, they require O(n) where n is string
+- reference types are generally O(n) where n is the length (for arrays) or the number of keys (in object)
+  example:
+  ![alt text](image.png)
+  its gonna be constant as we have only 2 variables that exists, and an array is not included why? because we are including only auxiliary and not input space
+  and its always the same no matter the input (ABOUT THE CODE)
+  another example:
+  as the algorithms tightly dependant on the input its gonna be same
+  ![alt text](image-1.png)
+
+LOGARITHMS:
+so what is logarithms?
+![alt text](image-2.png)
+exponent is the output of value / number ( in current case 2) until it isn't greater than 1
+ex: log2 (8), 8/2 = 4/2 = 2/2 = 1
+![alt text](image-3.png)
+the shorthand for the log in big o notation is log that equals to log2
+
+why care about logs in the first place?
+![alt text](image-4.png)
+
+RECAP:
+![alt text](image-5.png)
+
+OBJECTIVES:
+![alt text](image-6.png)
+INFO
+![alt text](image-7.png)
+BIG O of objects
+unordered data
+![alt text](image-8.png)
+![alt text](image-9.png)
+
+Arrays:
+![alt text](image-10.png)
+ordered data
+index is a numeric value of an item
+INFO
+![alt text](image-11.png)
+its methods
+![alt text](image-12.png)
 
 problem solving approach
 problem solving patterns
