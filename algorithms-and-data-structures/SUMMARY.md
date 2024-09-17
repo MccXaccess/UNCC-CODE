@@ -129,3 +129,7 @@ hash tables
 graphs
 graph traversal
 dijkstras algorithm
+
+# TYPES OF REPRESENTAION OF COMPLEXITY
+
+![alt text](image-13.png)
